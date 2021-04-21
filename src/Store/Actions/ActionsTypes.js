@@ -1,0 +1,1 @@
+export const CSV_FILE_RESULT="CSV_FILE_RESULT"

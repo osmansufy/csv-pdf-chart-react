@@ -1,0 +1,17 @@
+.formContainer{
+    border: 1px solid rgba(155, 50, 50, 0.692)
+}
+.stepperWrap{
+    display: flex;
+    flex-wrap: wrap;
+    .stepItem{
+flex-basis: 100%;
+    }
+}
+
+.d-none{
+    display: none;
+}
+.d-block{
+    display: block;
+}
