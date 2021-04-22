@@ -8,6 +8,7 @@ const CsvFileRead=({handleOnRemoveFile,handleOnDrop,handleOnError})=> {
     return (
       <>
         <h5>Click and Drag Upload</h5>
+        <div className="csvContainer">
         <CSVReader
           onDrop={handleOnDrop}
           onError={handleOnError}
@@ -17,12 +18,15 @@ const CsvFileRead=({handleOnRemoveFile,handleOnDrop,handleOnError})=> {
             header: true,
             fields :["KP","X","Y","Z"]
           }}
+         
         >
           <span>Drop CSV file here or click to upload.</span>
           <ul>
           
           </ul>
         </CSVReader>
+        </div>
+        
       </>
     );
   

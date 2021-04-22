@@ -7,8 +7,9 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import FirstStepForm from "./FirstStepForm";
 import SecondForm from "./SecondForm";
-import {csvResult} from '../../Store/Actions/actionFIleResult'
+import { csvResult } from "../../Store/Actions/actionFIleResult";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -25,9 +26,9 @@ const useStyles = makeStyles((theme) => ({
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
-      return "Select campaign settings...";
+      return "Please provide the project details...";
     case 1:
-      return "What is an ad group anyways?";
+      return "Select Your File (CSV)";
     default:
       return "Unknown stepIndex";
   }
@@ -35,12 +36,13 @@ function getStepContent(stepIndex) {
 
 const StepForm = () => {
   const classes = useStyles();
-  const dispatch=useDispatch()
-  const storeResult=(result,data) =>dispatch(csvResult(result,data))
+  const dispatch = useDispatch();
+  const storeResult = (result, data) => dispatch(csvResult(result, data));
   const [activeStep, setActiveStep] = useState(0);
   const [disabled, setDisabled] = useState(false);
   const [file, setFile] = useState();
-  const [allDataCsv,setAllDataCsv]=useState([])
+  const [allDataCsv, setAllDataCsv] = useState([]);
+  const history=useHistory()
   const handleFileChange = (e) => {
     const newFile = e.target.files[0];
     setFile(newFile);
@@ -60,19 +62,21 @@ const StepForm = () => {
     max_Z: "",
     min_Z: "",
   });
+  
   const parseStringToNumber = (arr, key) => {
-    const FilterNumber = arr.map((ar) => parseFloat(ar[key]));
-    // For remove unexpected result
-    const removeUnexpected = FilterNumber.filter(
+    const FilterNumber = arr.map((ar) => parseFloat(ar[key]).toFixed(1));
+    // For remove lust value
+    const removeLustValue = FilterNumber.filter(
       (g, index) => index != FilterNumber.length - 1
     );
-    return removeUnexpected;
+    return removeLustValue;
   };
+
   const handleOnDrop = (data) => {
     console.log("---------------------------");
     console.log(data.data);
     const gol = data.map((d) => d.data);
-    setAllDataCsv(gol)
+    setAllDataCsv(gol);
     let numberX = parseStringToNumber(gol, "X");
     // let numberX=gol.map(f=>parseFloat(f.X))
     let numberY = parseStringToNumber(gol, "Y");
@@ -110,7 +114,8 @@ const StepForm = () => {
     newValues[e.target.name] = e.target.value;
     setFormValues(newValues);
   };
-  function getSteps() {
+
+  const getSteps=()=> {
     return [
       <FirstStepForm
         values={formValues}
@@ -130,6 +135,7 @@ const StepForm = () => {
     ];
   }
   const steps = getSteps();
+
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     console.log(formValues);
@@ -142,11 +148,12 @@ const StepForm = () => {
   };
 
   const handleSubmit = () => {
-    const allInputValues={
-    ...formValues,
-    ...filesValues
-    }
-    storeResult(allInputValues,allDataCsv)
+    const allInputValues = {
+      ...formValues,
+      ...filesValues,
+    };
+    storeResult(allInputValues, allDataCsv);
+    history.push('/result')
   };
 
   return (
@@ -164,7 +171,13 @@ const StepForm = () => {
             <Typography className={classes.instructions}>
               All steps completed
             </Typography>
-            <Button variant="contained" color="secondary" onClick={handleSubmit}>Submit</Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handleSubmit}
+            >
+              Submit
+            </Button>
           </div>
         ) : (
           <div>

@@ -7,7 +7,8 @@ const SecondForm = ({handleOnDrop,handleOnRemoveFile,handleOnError,filesValues,a
     return (
         <div className={activeStep ? "d-block":"d-none"}>
            <CsvFileRead handleOnDrop={handleOnDrop} handleOnError={handleOnError} handleOnRemoveFile={handleOnRemoveFile} />
-              <TextField
+           <div className="secondStepContainer">
+           <TextField
         id="filled-secondary"
         label="Max X"
         variant="filled"
@@ -55,6 +56,8 @@ const SecondForm = ({handleOnDrop,handleOnRemoveFile,handleOnError,filesValues,a
         value={filesValues.min_Z}
         readOnly
       />
+           </div>
+             
         </div>
     );
 };

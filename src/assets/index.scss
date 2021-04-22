@@ -1,17 +1,61 @@
-.formContainer{
-    border: 1px solid rgba(155, 50, 50, 0.692)
-}
-.stepperWrap{
-    display: flex;
-    flex-wrap: wrap;
-    .stepItem{
-flex-basis: 100%;
-    }
+a{
+    text-decoration: none;
 }
 
-.d-none{
-    display: none;
+.formContainer {
+  border: 1px solid rgba(155, 50, 50, 0.692);
+  margin: 20px auto;
+  max-width: min-content;
+  padding: 2% 5%;
+  box-shadow: -2px 2px 10px 10px grey;
 }
-.d-block{
-    display: block;
+.stepperWrap {
+  display: flex;
+  flex-wrap: wrap;
+  .stepItem {
+    flex-basis: 100%;
+  }
+}
+
+.d-none {
+  display: none;
+}
+.d-block {
+  display: block;
+}
+
+.menu {
+  display: flex;
+  margin: 10px 0;
+  justify-content: center;
+  a {
+    text-decoration: none;
+  }
+}
+
+.csvContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+}
+.secondStepContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  & * {
+    margin: 10px 0;
+  }
+}
+.pdfDownload{
+    margin: 10px 0;
+}
+.chartContainer{
+    display: flex;
+    justify-content: center;
+    svg {
+        width: 90%;
+        height: 300px;
+    }
 }
