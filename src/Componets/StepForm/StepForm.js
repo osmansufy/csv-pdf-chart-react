@@ -78,7 +78,6 @@ const StepForm = () => {
     const gol = data.map((d) => d.data);
     setAllDataCsv(gol);
     let numberX = parseStringToNumber(gol, "X");
-    // let numberX=gol.map(f=>parseFloat(f.X))
     let numberY = parseStringToNumber(gol, "Y");
     let numberZ = parseStringToNumber(gol, "Z");
     const maxNumberX = Math.max(...numberX);

@@ -30,16 +30,7 @@ const PdfCreate = () => {
     });
   };
 
-  // const table2PDF = () => {
-  //   let input = window.document.getElementsByClassName("resultTable")[0];
-  //   console.log(input);
-  //   let img;
-  //   html2canvas(input).then((canvas) => {
-  //     img = canvas.toDataURL("image/png");
-  //     console.log("img", img);
-  //     setTableImg(img);
-  //   });
-  // };
+
   useEffect(() => {
     div2PDF();
     
@@ -65,10 +56,7 @@ const PdfCreate = () => {
           )
         }
       </PDFDownloadLink>
-      {/* <PDFViewer width="900" height="600">
-          <PdfDocument data={resultsData} 
-          tableImg={tableImg} img={pdfImg} />
-          </PDFViewer> */}
+
     </div>
   );
 };
