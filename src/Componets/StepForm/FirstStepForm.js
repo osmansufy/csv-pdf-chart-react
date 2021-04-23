@@ -35,6 +35,8 @@ const FirstStepForm=({values,changedValues,disabled})=> {
         label="Project Description"
         variant="filled"
         color="secondary"
+        multiline
+        rows={4}
         value={values.description}
         name="description"
         disabled={disabled}
@@ -58,6 +60,7 @@ const FirstStepForm=({values,changedValues,disabled})=> {
         variant="filled"
         value={values.contractor}
         name="contractor"
+   
         disabled={disabled}
         onChange={changedValues}
         color="secondary"
